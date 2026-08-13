@@ -1,0 +1,26 @@
+---
+import TextLink from "@components/TextLink.astro";
+import { resolvePath } from "@lib/utils";
+
+type Props = {
+  small?: boolean;
+};
+
+const { small } = Astro.props;
+---
+
+<div style={small ? "font-size: 0.875rem" : ""}>
+  <p>
+    I'm a Computer Engineer who is always happy to learn something new.</br></br>
+    I have experience with Computer Networking (Servers), Microcontrollers, AR and Desktop/Mobile/Web Applications.</br></br>
+    I also sometimes fix laptops.
+  </p>
+
+  <p>
+    This blog uses the Astro Milidev theme, which is a minimalistic portfolio/blog <TextLink
+      href="https://astro.build">Astro</TextLink
+    > theme.
+  </p>
+
+  <p>Enjoy!</p>
+</div>

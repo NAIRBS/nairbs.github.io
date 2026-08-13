@@ -1,0 +1,51 @@
+---
+import Head from "@components/Head.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import PageFind from "@components/PageFind.astro";
+import { GLOBAL } from "@consts";
+
+type Props = {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+};
+
+const { title, description, ogImage } = Astro.props;
+
+const finalTitle = title ? `${title} - ${GLOBAL.title}` : GLOBAL.title;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <Head title={finalTitle} {description} {ogImage} />
+    <!-- Google tag (gtag.js) -->
+    <!-- <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA_ID}"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '${import.meta.env.PUBLIC_GA_ID}');
+    </script> -->
+
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA_ID}`}></script>
+
+    <script is:inline define:vars={{ gaId: import.meta.env.PUBLIC_GA_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', gaId);
+    </script>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <PageFind />
+  </body>
+</html>

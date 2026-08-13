@@ -1,0 +1,41 @@
+---
+import { resolvePath } from "@lib/utils";
+import Bio from "./Bio.astro";
+import { GLOBAL } from "@consts";
+import Contact from "./Contact.astro";
+---
+
+<div class="start mt-4 flex items-center">
+  <!-- <img
+    src={resolvePath(GLOBAL.authorPhotoSrc, Astro.url.pathname)}
+    alt={GLOBAL.author}
+    class="mr-8 h-24 w-24 rounded-full"
+  /> -->
+   {GLOBAL.authorPhotoSrc && (
+      <>
+        <!-- Light Theme Profile Picture -->
+        <img
+          src={resolvePath(GLOBAL.authorPhotoSrc.lightThemeSrc, Astro.url.pathname)}
+          alt={GLOBAL.author}
+          class="mr-8 h-24 w-24 rounded-full block dark:hidden"
+        />
+        <!-- Dark Theme Profile Picture -->
+        <img
+          src={resolvePath(GLOBAL.authorPhotoSrc.darkThemeSrc, Astro.url.pathname)}
+          alt={GLOBAL.author}
+          class="mr-8 h-24 w-24 rounded-full hidden dark:block"
+        />
+      </>
+    )}
+
+  <div class="flex-grow">
+    <div>
+      <strong>Hi, I'm {GLOBAL.author}</strong>
+    </div>
+    <p>I'm a computer engineer who is always happy to learn something new. I have experience with Computer Networking, Microcontrollers, AR and Desktop/Mobile/Web Applications.<br>Feel free to leave a comment below!</p>
+    <p>
+      <strong>Contact me:</strong>
+    </p>
+    <Contact small />
+  </div>
+</div>
