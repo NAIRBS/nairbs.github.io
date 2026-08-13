@@ -14,12 +14,12 @@ const anyProjects =
   (await getFilteredCollectionEntries("projects")).entries.length > 0;
 ---
 
-<header transition:persist>
+<header transition:persist class="py-0">
   <Container>
-    <div class="flex flex-wrap justify-between gap-y-2">
+    <div class="flex flex-wrap justify-center items-center gap-y-2 pt-6 pb-1">
       <TextLink href={resolvePath("/")} underline={false}>
         {
-          <span class="flex items-end gap-2">
+          <span class="flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -34,14 +34,14 @@ const anyProjects =
               <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
               <polyline points="9 22 9 12 15 12 15 22"></polyline>
             </svg> 
-            <span class="font-semibold leading-none">Home</span>
+            <span class="font-semibold leading-none pr-4">Home</span>
             </span>
         }
       </TextLink>
 
       <nav class="flex items-center gap-x-3 text-sm divide-x divide-black/15 dark:divide-white/20">
         <TextLink href={resolvePath("/hire-me", Astro.url.pathname)}>
-          hire me
+          hire_me
         </TextLink>
 
         {anyBlogPosts && (
@@ -94,7 +94,7 @@ const anyProjects =
         </div>
       </nav>
       <!-- The 3 icons for Light, Dark and System theme Mode -->
-      <div class="flex flex-wrap items-center gap-1.5">
+      <div class="flex flex-wrap items-center gap-1.5 pl-3">
         <button
           id="light-theme-button"
           aria-label="Light theme"
